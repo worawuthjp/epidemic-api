@@ -1,11 +1,11 @@
 <?php 
 
-	include 'conn.php';
+	include '../conn.php';
 
 	$id = $_GET['id'];
 
 	// $queryResult=$connect -> query("SELECT * FROM user  ");
-	$queryResult=$connect -> query("SELECT * FROM tb_usernew where user_studentID ='$id'");
+	$queryResult=$conn -> query("SELECT * FROM tb_usernew where user_studentID ='$id'");
 
 	$result = array ();
 

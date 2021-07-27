@@ -1,18 +1,18 @@
-<?php 
+<?php
 
-	include 'conn.php';
+include '../conn.php';
 
-	$id = $_GET['id'];
+$id = $_GET['id'];
 
-	// $queryResult=$connect -> query("SELECT * FROM user  ");
-	$queryResult=$connect -> query("SELECT * FROM tb_vaccine where user_studentID='$id'");
+// $queryResult=$connect -> query("SELECT * FROM user  ");
+$queryResult = $conn->query("SELECT * FROM tb_vaccine where user_studentID='$id'");
 
-	$result = array ();
+$result = array();
 
-	while ($fetchData = $queryResult->fetch_assoc()) {
-		$result[] = $fetchData;
-	}
+while ($fetchData = $queryResult->fetch_assoc()) {
+    $result[] = $fetchData;
+}
 
-	echo json_encode($result);
+echo json_encode($result);
 
 ?>

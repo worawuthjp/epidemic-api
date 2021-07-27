@@ -1,7 +1,7 @@
 <?php 
-	include 'conn.php';
+	include '../conn.php';
 
-	$sql = $connect->query("SELECT * FROM tb_news");
+	$sql = $conn->query("SELECT * FROM tb_news");
 
 	$res = array();
 

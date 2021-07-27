@@ -1,8 +1,5 @@
 <?php
-	$db = mysqli_connect('localhost','root','','db_covid');
-	if (!$db) {
-		echo "Database connection faild";
-	}
+	require "../conn.php";
 
 	$image = $_FILES['image']['name'];
 	$name = $_POST['name'];
@@ -23,7 +20,7 @@
 
 	move_uploaded_file($tmp_name, $imagePath);
 
-	$db->query("INSERT INTO tb_usernew(user_img,image,user_studentID,user_fullname,user_faculty,user_department,user_tel,user_address,user_person,user_username,user_email,user_password)VALUES('".$image."','".$imagePath."','".$user_studentID."','".$user_fullname."','".$user_faculty."','".$user_department."','".$user_tel."','".$user_address."','".$user_person."','".$user_username."','".$user_email."','".$user_password."')");
+	$conn->query("INSERT INTO tb_usernew(user_img,image,user_studentID,user_fullname,user_faculty,user_department,user_tel,user_address,user_person,user_username,user_email,user_password)VALUES('".$image."','".$imagePath."','".$user_studentID."','".$user_fullname."','".$user_faculty."','".$user_department."','".$user_tel."','".$user_address."','".$user_person."','".$user_username."','".$user_email."','".$user_password."')");
 
 
 ?>

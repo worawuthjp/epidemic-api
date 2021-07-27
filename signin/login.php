@@ -1,34 +1,66 @@
 <?php
 
-    //include 'conn.php';
+include '../conn.php';
+require '../model/UserLogin.php';
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $db = "db_covid";
+$user_username = $_POST['user_username'];
+$user_password = $_POST['user_password'];
 
-    $conn = mysqli_connect($servername, $username, $password, $db);
 
-    if(!$conn){
-        die("Connection Failed : " . mysqli_connect_error());
+$sql = "SELECT * FROM tb_usernew WHERE user_username = '" . $user_username . "' AND user_password = '" . $user_password . "'";
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+    $id = -1;
+    while ($row = mysqli_fetch_array($result)) {
+        $id = $row['user_studentID'];
     }
 
-    $user_username = $_POST['user_username'];
-    $user_password = $_POST['user_password'];
-
-
-
-    $sql = "SELECT * FROM tb_usernew WHERE user_username = '".$user_username."' AND user_password = '".$user_password."'";
-    $result = $conn->query($sql);
-
-
-    if ($result->num_rows > 0) {
-        while ($row = mysqli_fetch_array($result)) {
-            $id = $row['user_studentID'];
+    $sql = "SELECT * FROM `tb_timeline` 
+    INNER JOIN `tb_usernew` ON tb_usernew.user_studentID = tb_timeline.user_studentID 
+WHERE tb_usernew.user_studentID = '$id' ORDER BY tb_timeline.time_checkout DESC";
+    $result2 = $conn->query($sql);
+    $s = false;
+    $res = new UserLogin();
+    if ($result2->num_rows > 0) {
+        $record = array();
+        $status = "";
+        while ($row = $result2->fetch_assoc()) {
+            if($row['status'] == 1){
+                $record = $row;
+                $s = true;
+                break;
+            }
         }
 
-        echo json_encode($id);
-    } else {
-        echo json_encode("Error");
+        if($s){
+            $origin = new DateTime($record['time_checkout']);
+            $target = new DateTime('now');
+            $interval = $origin->diff($target);
+            $diff = $interval->format('%a');
+
+            if($diff <= 14 ){
+                $res->status = "มีความเสี่ยงสูง";
+            }else if($diff > 14 && $diff <= 28){
+                $res->status = "เฝ้าระวัง";
+            }else{
+                $res->status = "ไม่มีความเสี่ยง";
+            }
+        }else{
+            $res->status = "ไม่มีความเสี่ยง";
+        }
+
     }
+    if(!is_null($res->userID)){
+        $res->msg = "success";
+    }
+    else{
+        $res->msg = "error";
+    }
+    echo $res->mapResponse();
+} else {
+    $errRes = new UserLogin();
+    echo $errRes->mapResponse();
+}
 ?>

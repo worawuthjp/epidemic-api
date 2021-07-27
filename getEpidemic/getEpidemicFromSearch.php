@@ -1,9 +1,9 @@
 <?php 
-	include 'conn.php';
+	include '../conn.php';
 
 	$search = $_GET['search'];
 
-	$queryResult = $connect->query("SELECT * from tb_epidemic where epidemic_topic LIKE '%$search%'");
+	$queryResult = $conn->query("SELECT * from tb_epidemic where epidemic_topic LIKE '%$search%'");
 
 	$result = array ();
 

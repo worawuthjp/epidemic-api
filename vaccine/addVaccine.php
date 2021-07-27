@@ -1,8 +1,5 @@
 <?php 
-	$db = mysqli_connect('localhost','root','','db_covid');
-	if (!$db) {
-		echo "Database connection faild";
-	}
+	require '../conn.php';
 
 	$image = $_FILES['image']['name'];
 	$name = $_POST['name'];
@@ -17,5 +14,5 @@
 
 	move_uploaded_file($tmp_name, $imagePath);
 
-	$db->query("INSERT INTO tb_vaccine(user_image,image,user_vaccine,user_status,user_studentID,user_date)VALUES('".$image."','".$imagePath."','".$user_vaccine."','".$user_status."','".$user_studentID."','".$user_date."')");
+	$conn->query("INSERT INTO tb_vaccine(user_image,image,user_vaccine,user_status,user_studentID,user_date)VALUES('".$image."','".$imagePath."','".$user_vaccine."','".$user_status."','".$user_studentID."','".$user_date."')");
 ?>
