@@ -12,8 +12,8 @@ $adminID = null;
 if(isset($_POST['placeName'])){
     $placeName = $_POST['placeName'];
 }
-if(isset($_POST['$placeID'])){
-    $placeID = $_POST['$placeID'];
+if(isset($_POST['placeID'])){
+    $placeID = $_POST['placeID'];
 }
 if(isset($_POST['lat'])){
     $lat = $_POST['lat'];

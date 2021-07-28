@@ -33,7 +33,7 @@ class placeSearchApi
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJN1t_tDeuEmsRUsoyG83frY4&key=AIzaSyCXzEl_l-8_eE-tK1W4KQ3wiKT1OoOGq-E',
+            CURLOPT_URL => "https://maps.googleapis.com/maps/api/place/details/json?place_id=$id&key=AIzaSyCXzEl_l-8_eE-tK1W4KQ3wiKT1OoOGq-E",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
