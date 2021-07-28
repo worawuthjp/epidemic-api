@@ -46,6 +46,6 @@ class placeSearchApi
         $response = curl_exec($curl);
 
         curl_close($curl);
-        return $response->geometry->location;
+        return $response;
     }
 }
