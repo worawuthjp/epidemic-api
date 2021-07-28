@@ -48,8 +48,10 @@ class Timeline
             $this->places = [];
             while ($row = $result->fetch_assoc()){
                 $obj = array();
+                $obj['id'] = $row['place_id'];
                 $obj['lat'] = $row['latitude'];
                 $obj['long'] = $row['longtitude'];
+                $obj['place_name'] = $row['timeline_name'];
                 $obj['date_checkin'] = $row['time_checkin'];
                 $obj['date_checkout'] = $row['time_checkout'];
                 array_push($this->places,$obj);

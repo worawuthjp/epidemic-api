@@ -14,7 +14,7 @@ class Checkin
         $this->long = null;
     }
 
-    public function mapRequest($id, $lat, $long, $conn)
+    public function mapRequest($id, $lat, $long,$name,$placeID, $conn)
     {
         $res = array();
         $record = $this->getLastest($id,$conn);
@@ -25,8 +25,8 @@ class Checkin
             return json_encode($res);
         }
         $date = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO `tb_timeline`(user_studentID,latitude,longtitude,time_checkin) 
-VALUES('$id','$lat','$long','$date')";
+        $sql = "INSERT INTO `tb_timeline`(timeline_name,place_id,user_studentID,latitude,longtitude,time_checkin) 
+VALUES('$name','$placeID','$id','$lat','$long','$date')";
         $result = $conn->query($sql);
         if($result){
             $res['msg'] = 'success';
