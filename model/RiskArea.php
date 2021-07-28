@@ -45,8 +45,7 @@ class RiskArea
         $res = json_decode($response);
         foreach ($res->results as $item){
             $placeID = $item->place_id;
-            $sql = "UPDATE `tb_timeline` SET status='1' WHERE place_id = '$placeID' and timeline_checkin >= '$startDate' and timeline_checkout <= '$endDate' ";
-            echo $sql;
+            $sql = "UPDATE `tb_timeline` SET status='1' WHERE place_id = '$placeID' and time_checkin >= '$startDate' and time_checkout <= '$endDate' ";
             $result = $conn->query($sql);
             $this->found = $result;
         }
