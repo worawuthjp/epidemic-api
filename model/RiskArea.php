@@ -42,6 +42,7 @@ class RiskArea
 
         curl_close($curl);
         $res = $response->result;
+        print_r($res);
         foreach ($res as $item){
             $placeID = $item->place_id;
             $sql = "UPDATE `tb_timeline` SET status='1' WHERE place_id = '$placeID' and timeline_checkin >= '$startDate' and timeline_checkout <= '$endDate' ";
