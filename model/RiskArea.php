@@ -46,7 +46,7 @@ class RiskArea
 //        $res = json_decode($response);
         $sql = "SELECT tb_timeline.timeline_id FROM tb_timeline
 INNER JOIN tb_riskarea ON tb_riskarea.placeID = tb_timeline.place_id
-WHERE tb_timeline.time_checkin BETWEEN tb_riskarea.startDate and tb_riskarea.endDate";
+WHERE tb_timeline.status = 0 and tb_timeline.time_checkin BETWEEN tb_riskarea.startDate and tb_riskarea.endDate";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
