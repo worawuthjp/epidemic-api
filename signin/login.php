@@ -23,6 +23,7 @@ WHERE tb_usernew.user_studentID = '$id' ORDER BY tb_timeline.time_checkout DESC"
     $result2 = $conn->query($sql);
     $s = false;
     $res = new UserLogin();
+    $res->userID = $id;
     if ($result2->num_rows > 0) {
         $record = array();
         $status = "";
