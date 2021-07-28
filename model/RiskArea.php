@@ -45,6 +45,7 @@ class RiskArea
         foreach ($res as $item){
             $placeID = $item->place_id;
             $sql = "UPDATE `tb_timeline` SET status='1' WHERE place_id = '$placeID' and timeline_checkin >= '$startDate' and timeline_checkout <= '$endDate' ";
+            echo $sql;
             $result = $conn->query($sql);
             $this->found = $result;
         }
