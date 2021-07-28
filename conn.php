@@ -1,8 +1,8 @@
 <?php
 
 $servername = "localhost";
-$username = "mypos";
-$password = "Jay_0925191680";
+$username = "root";
+$password = "";
 $db = "db_covid";
 
 $conn = mysqli_connect($servername, $username, $password, $db);
