@@ -41,7 +41,7 @@ class RiskArea
         $response = curl_exec($curl);
 
         curl_close($curl);
-        $res = $response->result;
+        $res = json_decode($response['result']);
         print_r($res);
         foreach ($res as $item){
             $placeID = $item->place_id;
