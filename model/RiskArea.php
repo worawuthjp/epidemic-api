@@ -47,7 +47,7 @@ class RiskArea
             $placeID = $item->place_id;
             $sql = "UPDATE `tb_timeline` SET status='1' WHERE place_id = '$placeID' and time_checkin >= '$startDate' and time_checkout <= '$endDate' ";
             $result = $conn->query($sql);
-            $this->found = $result;
+            $this->found = $result? $this->found+1 : $this->found;
         }
     }
 }
