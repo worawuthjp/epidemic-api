@@ -50,6 +50,8 @@ class Timeline
                 $obj = array();
                 $obj['lat'] = $row['latitude'];
                 $obj['long'] = $row['longtitude'];
+                $obj['date_checkin'] = $row['time_checkin'];
+                $obj['date_checkout'] = $row['time_checkout'];
                 array_push($this->places,$obj);
             }
 
