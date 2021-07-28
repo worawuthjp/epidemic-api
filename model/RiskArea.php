@@ -19,13 +19,14 @@ class RiskArea
         if ($result) {
             $this->msg = "success";
             $this->found = 0;
-            $this->checkRisk($conn,$lat,$long,$startDate,$endDate);
+            $this->checkRisk($conn, $lat, $long, $startDate, $endDate);
         }
         return json_encode($this);
 
     }
 
-    public function checkRisk($conn,$lat,$long,$startDate,$endDate){
+    public function checkRisk($conn, $lat, $long, $startDate, $endDate)
+    {
 //        $curl = curl_init();
 //
 //        curl_setopt_array($curl, array(
@@ -47,11 +48,12 @@ class RiskArea
 INNER JOIN tb_riskarea ON tb_riskarea.placeID = tb_timeline.place_id
 WHERE tb_timeline.time_checkin BETWEEN tb_riskarea.startDate and tb_riskarea.endDate";
         $result = $conn->query($sql);
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $this->found = $result->num_rows;
                 $sql = "UPDATE `tb_timeline` SET status='1' WHERE timeline_id = '{$row['timeline_id']}'";
-                $result = $conn->query($sql);
-                $this->found = $result;
+                $conn->query($sql);
+
             }
         }
     }
