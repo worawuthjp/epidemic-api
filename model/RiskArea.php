@@ -13,7 +13,7 @@ class RiskArea
     }
 
     public function getAll($conn){
-        $sql = "SELECT tb_riskarea.*,tb_admin.admin_id,tb_admin.username,tb_admin.admin_fullname FROM tb_riskarea INNER JOIN tb_admin ON tb_admin.admin_id = tb_riskarea.admin_id ORDER BY tb_riskarea.riskarea_id DESC";
+        $sql = "SELECT tb_riskarea.*,tb_admin.admin_id,tb_admin.admin_username,tb_admin.admin_fullname FROM tb_riskarea INNER JOIN tb_admin ON tb_admin.admin_id = tb_riskarea.admin_id ORDER BY tb_riskarea.riskarea_id DESC";
         $result = $conn->query($sql);
         $res = array();
         $res['msg'] = 'error';
