@@ -21,6 +21,7 @@ class RiskArea
             $res['msg'] = 'success';
             $arr = array();
             while ($row = $result->ferch_assoc()){
+                print_r($row);
                 $arr[] = $row;
             }
             $res['data'] = $arr;
