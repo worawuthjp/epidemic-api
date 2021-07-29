@@ -20,7 +20,7 @@ class RiskArea
         if($result->num_rows >= 0){
             $res['msg'] = 'success';
             $arr = array();
-            while ($row = $result->ferch_assoc()){
+            while ($row = $result->fetch_assoc()){
                 print_r($row);
                 $arr[] = $row;
             }
