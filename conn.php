@@ -1,5 +1,5 @@
 <?php
-
+header("Access-Control-Allow-Origin: *");
 $servername = "localhost";
 $username = "mypos";
 $password = "Jay_0925191680";

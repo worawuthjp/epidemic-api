@@ -1,5 +1,4 @@
 <?php
-header("Access-Control-Allow-Origin: *");
 include '../conn.php';
 
 $sql = $conn->query("SELECT * FROM tb_news");
