@@ -1,6 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Credentials: false");
 header("access-control-allow-methods: OPTIONS,DELETE,GET,HEAD,PATCH,POST,PUT");
 $servername = "localhost";
 $username = "mypos";
