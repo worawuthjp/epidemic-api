@@ -11,6 +11,6 @@
 		$result[] = $fetchData;
 	}
 
-	echo utf8_decode(json_encode($result));
+	echo json_encode($result);
 
 ?>

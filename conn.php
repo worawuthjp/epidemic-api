@@ -9,6 +9,7 @@ $password = "Jay_0925191680";
 $db = "db_covid";
 
 $conn = mysqli_connect($servername, $username, $password, $db);
+$conn->set_charset('UTF-8');
 
 if (!$conn) {
     die("Connection Failed : " . mysqli_connect_error());
