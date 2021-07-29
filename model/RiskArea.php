@@ -21,7 +21,6 @@ class RiskArea
             $res['msg'] = 'success';
             $arr = array();
             while ($row = $result->fetch_assoc()){
-                print_r($row);
                 $arr[] = $row;
             }
             $res['data'] = $arr;
