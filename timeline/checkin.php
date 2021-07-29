@@ -19,10 +19,10 @@ if(isset($_POST['long'])){
 }
 
 if(isset($_GET['placeName'])){
-    $name = $_GET['placeName'];
+    $name = $_POST['placeName'];
 }
 if(isset($_GET['placeID'])){
-    $placeID = $_GET['placeID'];
+    $placeID = $_POST['placeID'];
 }
 
 
