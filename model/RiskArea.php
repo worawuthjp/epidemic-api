@@ -13,7 +13,19 @@ class RiskArea
     }
 
     public function edit($id,$placeID, $placeName, $lat, $long, $startDate, $endDate, $conn){
+        $sql = "SELECT tb_timeline.timeline_id FROM tb_timeline
+INNER JOIN tb_riskarea ON tb_riskarea.placeID = tb_timeline.place_id
+WHERE tb_timeline.status = 1 and tb_riskarea.riskarea_id = '$id' and tb_timeline.time_checkin BETWEEN tb_riskarea.startDate and tb_riskarea.endDate";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $this->found = $result->num_rows;
+                $sql = "UPDATE `tb_timeline` SET status='0' WHERE timeline_id = '{$row['timeline_id']}'";
+                $conn->query($sql);
+            }
+        }
         $sql = "UPDATE tb_riskare SET riskarea_name='$placeName',placeID='$placeID',latitude='$lat',longtitude='$long',startDate='$startDate',endDate='$endDate' WHERE riskarea_id = $id";
+        echo $sql;
         $result = $conn->query($sql);
         if ($result) {
             $this->msg = "success";
