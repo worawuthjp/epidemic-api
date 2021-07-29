@@ -1,12 +1,13 @@
-<?php 
-	include '../conn.php';
+<?php
+header("Access-Control-Allow-Origin: *");
+include '../conn.php';
 
-	$sql = $conn->query("SELECT * FROM tb_news");
+$sql = $conn->query("SELECT * FROM tb_news");
 
-	$res = array();
+$res = array();
 
-	while($row=$sql->fetch_assoc()){
-		$res[] = $row;
-	}
-	echo json_encode($res);
+while ($row = $sql->fetch_assoc()) {
+    $res[] = $row;
+}
+echo json_encode($res);
 ?>
