@@ -15,6 +15,7 @@ class RiskArea
     public function getAll($conn){
         $sql = "SELECT * FROM tb_riskarea INNER JOIN tb_admin ON tb_admin.admin_id = tb_riskarea.admin_id ORDER BY tb_riskarea.riskarea_id DESC";
         $result = $conn->query($sql);
+        echo $sql;
         $res = array();
         $res['msg'] = 'error';
         if($result->num_rows > 0){
