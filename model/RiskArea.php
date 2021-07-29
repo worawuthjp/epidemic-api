@@ -46,7 +46,7 @@ WHERE tb_timeline.status = 1 and tb_riskarea.riskarea_id = '$id' and tb_timeline
                 $conn->query($sql);
             }
         }
-        $sql = "DELETE FROM tb_riskarea WHERE riskarea_id = '$id'";
+        $sql = "DELETE FROM tb_riskarea WHERE riskarea_id = $id";
         $result = $conn->query($sql);
         if ($result) {
             $this->msg = "success";
