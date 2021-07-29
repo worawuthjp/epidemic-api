@@ -25,7 +25,6 @@ WHERE tb_timeline.status = 1 and tb_riskarea.riskarea_id = '$id' and tb_timeline
             }
         }
         $sql = "UPDATE tb_riskare SET riskarea_name='$placeName',placeID='$placeID',latitude='$lat',longtitude='$long',startDate='$startDate',endDate='$endDate' WHERE riskarea_id = $id";
-        echo $sql;
         $result = $conn->query($sql);
         if ($result) {
             $this->msg = "success";
