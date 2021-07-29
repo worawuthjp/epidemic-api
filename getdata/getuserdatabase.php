@@ -1,7 +1,5 @@
-<?php 
-
+<?php
 	include '../conn.php';
-
 	$id = $_GET['id'];
 
 	// $queryResult=$connect -> query("SELECT * FROM user  ");
@@ -13,6 +11,6 @@
 		$result[] = $fetchData;
 	}
 
-	echo json_encode($result);
+	echo utf8_decode(json_encode($result));
 
 ?>
