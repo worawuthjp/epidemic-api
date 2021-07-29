@@ -18,10 +18,10 @@ if(isset($_POST['long'])){
     $long = $_POST['long'];
 }
 
-if(isset($_GET['placeName'])){
+if(isset($_POST['placeName'])){
     $name = $_POST['placeName'];
 }
-if(isset($_GET['placeID'])){
+if(isset($_POST['placeID'])){
     $placeID = $_POST['placeID'];
 }
 
