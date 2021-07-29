@@ -1,4 +1,7 @@
 <?php
+require '../conn.php';
+require '../model/RiskArea.php';
+
 $placeName = '';
 $placeID = '';
 $lat = null;
