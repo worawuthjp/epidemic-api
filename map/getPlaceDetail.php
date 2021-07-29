@@ -1,4 +1,5 @@
 <?php
+require '../conn.php';
 require '../model/placeSearchApi.php';
 $placeID = '';
 if(isset($_GET['placeID'])){

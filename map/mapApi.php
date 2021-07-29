@@ -1,4 +1,5 @@
 <?php
+require '../conn.php';
 require '../model/placeSearchApi.php';
 $input = null;
 if(isset($_GET['input'])){
