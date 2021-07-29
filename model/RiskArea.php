@@ -18,11 +18,11 @@ class RiskArea
         echo $sql;
         $res = array();
         $res['msg'] = 'error';
-        if($result->num_rows > 0){
+        if($result->num_rows >= 0){
             $res['msg'] = 'success';
             $arr = array();
             while ($row = $result->ferch_assoc()){
-                $arr = [...$arr,$row];
+                array_push($arr,$row);
             }
             $res['data'] = $arr;
         }
