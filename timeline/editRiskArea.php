@@ -9,6 +9,7 @@ $long = null;
 $startDate = null;
 $endDate = null;
 $id = null;
+$status_id = null;
 if(isset($_POST['placeName'])){
     $placeName = $_POST['placeName'];
 }
@@ -34,5 +35,10 @@ if(isset($_POST['id'])){
     $id = $_POST['id'];
 }
 
+if(isset($_POST['statusID'])){
+    $status_id = $_POST['statusID'];
+}
+
+
 $riskArea = new RiskArea();
-echo $riskArea->edit($id,$placeID,$placeName,$lat,$long,$startDate,$endDate,$conn);
+echo $riskArea->edit($id,$placeID,$placeName,$lat,$long,$startDate,$endDate,$status_id,$conn);
