@@ -55,9 +55,9 @@ WHERE tb_timeline.status = 1 and tb_riskarea.riskarea_id = '$id' and tb_timeline
     }
 
     public function getAll($conn,$id){
-        $sql = "SELECT tb_riskarea.*,tb_admin.admin_id,tb_admin.admin_username,tb_admin.admin_fullname FROM tb_riskarea INNER JOIN tb_admin ON tb_admin.admin_id = tb_riskarea.admin_id ORDER BY tb_riskarea.riskarea_id DESC";
+        $sql = "SELECT tb_riskarea.*,tb_admin.admin_id,tb_admin.admin_username,tb_admin.admin_fullname,tb_status.status_id,tb_status.status_name FROM tb_riskarea INNER JOIN tb_admin ON tb_admin.admin_id = tb_riskarea.admin_id INNER JOIN tb_status ON tb_status.status_id = tb_riskarea.status_id ORDER BY tb_riskarea.riskarea_id DESC";
         if($id){
-            $sql = "SELECT tb_riskarea.*,tb_admin.admin_id,tb_admin.admin_username,tb_admin.admin_fullname FROM tb_riskarea INNER JOIN tb_admin ON tb_admin.admin_id = tb_riskarea.admin_id WHERE tb_riskarea.riskarea_id = $id ORDER BY tb_riskarea.riskarea_id DESC";
+            $sql = "SELECT tb_riskarea.*,tb_admin.admin_id,tb_admin.admin_username,tb_admin.admin_fullname,tb_status.status_id,tb_status.status_name FROM tb_riskarea INNER JOIN tb_admin ON tb_admin.admin_id = tb_riskarea.admin_id INNER JOIN tb_status ON tb_status.status_id = tb_riskarea.status_id WHERE tb_riskarea.riskarea_id = $id ORDER BY tb_riskarea.riskarea_id DESC";
         }
         $result = $conn->query($sql);
         $res = array();
