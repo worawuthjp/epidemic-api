@@ -25,12 +25,24 @@ class Checkin
             return json_encode($res);
         }
         $date = date('Y-m-d H:i:s');
-        $sql = "INSERT INTO `tb_timeline`(timeline_name,place_id,user_studentID,latitude,longtitude,time_checkin) 
-VALUES('$name','$placeID','$id','$lat','$long','$date')";
+        $status = 0;
+        $sql = "SELECT COUNT(*) AS NUM FROM tb_riskarea WHERE placeID = '$placeID' and '$date' BETWEEN startDate and endDate ";
+        $result = $conn->query($sql);
+        if($result->num_rows > 0){
+            $row = $result->fetch_assoc();
+            if($row['NUM'] > 0){
+                $status = 1;
+            }
+        }
+        $sql = "INSERT INTO `tb_timeline`(timeline_name,place_id,user_studentID,latitude,longtitude,time_checkin,status) 
+VALUES('$name','$placeID','$id','$lat','$long','$date','$status')";
         $result = $conn->query($sql);
         if($result){
             $res['msg'] = 'success';
             $res['statusCode'] = 200;
+            if($status == 1){
+                $res['isRisk'] = true;
+            }
             return json_encode($res);
         }else{
 
