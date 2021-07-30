@@ -26,7 +26,7 @@ class Checkin
         }
         $date = date('Y-m-d H:i:s');
         $status = 0;
-        $sql = "SELECT COUNT(*) AS NUM FROM tb_riskarea WHERE placeID = '$placeID' and '$date' BETWEEN startDate and endDate ";
+        $sql = "SELECT COUNT(*) AS NUM FROM tb_riskarea WHERE placeID = '$placeID' and ('$date' BETWEEN startDate and endDate) ";
         $result = $conn->query($sql);
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();

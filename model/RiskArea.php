@@ -12,7 +12,7 @@ class RiskArea
         $this->msg = "error";
     }
 
-    public function edit($id,$placeID, $placeName, $lat, $long, $startDate, $endDate, $conn){
+    public function edit($id,$placeID, $placeName, $lat, $long, $startDate, $endDate,$statusID, $conn){
         $sql = "SELECT tb_timeline.timeline_id FROM tb_timeline
 INNER JOIN tb_riskarea ON tb_riskarea.placeID = tb_timeline.place_id
 WHERE tb_timeline.status = 1 and tb_riskarea.riskarea_id = '$id' and tb_timeline.time_checkin BETWEEN tb_riskarea.startDate and tb_riskarea.endDate";
@@ -24,7 +24,7 @@ WHERE tb_timeline.status = 1 and tb_riskarea.riskarea_id = '$id' and tb_timeline
                 $conn->query($sql);
             }
         }
-        $sql = "UPDATE tb_riskarea SET riskarea_name='$placeName',placeID='$placeID',latitude='$lat',longtitude='$long',startDate='$startDate',endDate='$endDate' WHERE riskarea_id = $id";
+        $sql = "UPDATE tb_riskarea SET riskarea_name='$placeName',placeID='$placeID',latitude='$lat',longtitude='$long',startDate='$startDate',endDate='$endDate',status_id = '$statusID' WHERE riskarea_id = $id";
         $result = $conn->query($sql);
         if ($result) {
             $this->msg = "success";
@@ -74,9 +74,9 @@ WHERE tb_timeline.status = 1 and tb_riskarea.riskarea_id = '$id' and tb_timeline
         return json_encode($res);
     }
 
-    public function add($id, $name, $lat, $long, $startDate, $endDate, $admin_id, $conn)
+    public function add($id, $name, $lat, $long, $startDate, $endDate, $admin_id,$status_id, $conn)
     {
-        $sql = "INSERT INTO `tb_riskarea` (riskarea_name,placeID,latitude,longtitude,startDate,endDate,admin_id) VALUES('$name','$id','$lat','$long','$startDate','$endDate','$admin_id')";
+        $sql = "INSERT INTO `tb_riskarea` (riskarea_name,placeID,latitude,longtitude,startDate,endDate,admin_id,status_id) VALUES('$name','$id','$lat','$long','$startDate','$endDate','$admin_id','$status_id')";
         $result = $conn->query($sql);
         if ($result) {
             $this->msg = "success";
