@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $response = array();
     $response['msg'] = 'error';
     $response['statusCode'] = 200;
-    if($userID){
+    if($id){
         $response['msg'] = 'success';
         $response['isCheckout'] = $res->isCheckout($row['timeline_id'],$conn);
         $response['placeID'] = $row['place_id'];
