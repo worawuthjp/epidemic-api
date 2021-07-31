@@ -30,17 +30,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo $res->mapRequest($id,$lat,$long,$name,$placeID,$conn);
 }else if($_SERVER['REQUEST_METHOD'] == 'GET'){
     if(isset($_GET['userID'])){
-        $userID = $_GET['userID'];
+        $id = $_GET['userID'];
     }
-    $row = $res->getLastest($userID,$conn);
+    $row = $res->getLastest($id,$conn);
     $response = array();
     $response['msg'] = 'error';
     $response['statusCode'] = 200;
     if($userID){
         $response['msg'] = 'success';
         $response['isCheckout'] = $res->isCheckout($row['timeline_id'],$conn);
-        $response['placeID'] = $row['placeID'];
-        $response['placeName'] = $row['placeName'];
+        $response['placeID'] = $row['place_id'];
+        $response['placeName'] = $row['timeline_name'];
         $response['time_checkin'] = $row['time_checkin'];
         $response['statusCode'] = 200;
     }
