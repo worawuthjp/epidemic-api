@@ -13,7 +13,7 @@ class placeSearchApi
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$input&key=AIzaSyCXzEl_l-8_eE-tK1W4KQ3wiKT1OoOGq-E",
+            CURLOPT_URL => "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$input&key=AIzaSyC2n-2zDG5fX12Dyf8z_49SyOUkSjVnu0Y",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -33,7 +33,7 @@ class placeSearchApi
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://maps.googleapis.com/maps/api/place/details/json?place_id=$id&key=AIzaSyCXzEl_l-8_eE-tK1W4KQ3wiKT1OoOGq-E",
+            CURLOPT_URL => "https://maps.googleapis.com/maps/api/place/details/json?place_id=$id&key=AIzaSyC2n-2zDG5fX12Dyf8z_49SyOUkSjVnu0Y",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
