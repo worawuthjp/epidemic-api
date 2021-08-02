@@ -68,6 +68,6 @@ VALUES('$name','$placeID','$id','$lat','$long','$date','$status')";
             $row =  $result->fetch_assoc();
             return !is_null($row['time_checkout']);
         }
-        return false;
+        return true;
     }
 }
