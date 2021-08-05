@@ -20,7 +20,7 @@
 
 	move_uploaded_file($tmp_name, $imagePath);
 
-	$conn->query("INSERT INTO tb_usernew(user_img,image,user_studentID,user_fullname,user_faculty,user_department,user_tel,user_address,user_person,user_username,user_email,user_password)VALUES('".$image."','".$imagePath."','".$user_studentID."','".$user_fullname."','".$user_faculty."','".$user_department."','".$user_tel."','".$user_address."','".$user_person."','".$user_username."','".$user_email."','".$user_password."')");
+	$conn->query("INSERT INTO tb_usernew(user_img,image,user_studentID,user_fullname,user_faculty,user_department,user_tel,user_address,user_person,user_username,user_email,user_password)VALUES('".''."','".$imagePath."','".$user_studentID."','".$user_fullname."','".$user_faculty."','".$user_department."','".$user_tel."','".$user_address."','".$user_person."','".$user_username."','".$user_email."','".$user_password."')");
 
 
 ?>

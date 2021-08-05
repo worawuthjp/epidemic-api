@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $response['statusCode'] = 200;
     if($id){
         $response['msg'] = 'success';
-        $response['isCheckout'] = $res->isCheckout($row['timeline_id'],$conn);
+        $response['isCheckout'] = isset($row['timeline_id']) ?$res->isCheckout($row['timeline_id'],$conn) : true;
         $response['placeID'] = $row['place_id'];
         $response['placeName'] = $row['timeline_name'];
         $response['time_checkin'] = $row['time_checkin'];
