@@ -7,4 +7,4 @@ if(isset($_GET['placeID'])){
 }
 
 $map = new placeSearchApi();
-echo $map->getMapDetail($placeID);
+echo $map->getMapDetail($placeID,$API_MAP_KEY);

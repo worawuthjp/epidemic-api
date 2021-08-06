@@ -9,7 +9,7 @@ class placeSearchApi
         $this->response = null;
     }
 
-    public function getResponse($input){
+    public function getResponse($input,$API_MAP_KEY){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -29,7 +29,7 @@ class placeSearchApi
         return $response;
     }
 
-    public function getMapDetail($id){
+    public function getMapDetail($id,$API_MAP_KEY){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
