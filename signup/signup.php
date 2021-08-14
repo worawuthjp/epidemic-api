@@ -67,12 +67,21 @@ VALUES('$user_studentID','$user_fullname','$user_faculty','$user_department','$u
 			$context = $txt;
 			$mail->Body = $context;
 
-			$mail->send();
+			if($mail->send()){
+				$arr['isSent'] = true;
+				$arr['status'] = 'success';
+				$arr['statusCode'] = 200;
+				echo json_encode($arr) ;
+			}else{
+				$sql = "DELETE FROM tb_usernew WHERE user_studentID='$user_studentID'";
+				$conn->query($sql);
+				$arr['isSent'] = false;
+				$arr['status'] = 'error';
+				$arr['statusCode'] = 400;
+				echo json_encode($arr) ;
+			}
 
-			$arr['isSent'] = true;
-			$arr['status'] = 'success';
-			$arr['statusCode'] = 200;
-			echo json_encode($arr) ;
+
 
 		}
 		catch (Exception $e) {
