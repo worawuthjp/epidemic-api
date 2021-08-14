@@ -31,6 +31,7 @@ require "../conn.php";
 	$sql = "INSERT INTO tb_usernew(user_studentID,user_fullname,user_faculty,user_department,user_tel,user_address,user_person,user_username,user_email,user_password,user_img,image) 
 VALUES('$user_studentID','$user_fullname','$user_faculty','$user_department','$user_tel','$user_address','$user_person','$user_username','$user_email','$user_password','$tmp_name','$imagePath')";
 	$result = $conn->query($sql);
+	$arr = array();
 	if($result){
 		//send mail
 		$mail = new PHPMailer(true);
@@ -39,9 +40,9 @@ VALUES('$user_studentID','$user_fullname','$user_faculty','$user_department','$u
 		$FROM = $SYSEMAIL;
 		$TO = $user_email; // recipient email
 		$subject = "Verify Email";
-		$txt = "Please Verify Email thanatorn.chr@gmail.com <br>Please click follow this link : <a href='$SIGNUPLINK"."$user_studentID'".">$SIGNUPLINK.$id</a>";
+		$txt = "Please Verify Email $user_email <br>Please click follow this link : <a href='$SIGNUPLINK"."$user_studentID'".">$SIGNUPLINK.$user_studentID</a>";
 		$headers = "From: $SYSEMAIL" . "\r\n";
-		$arr = array();
+
 		try {
 			//Server settings
 			//$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
@@ -92,6 +93,11 @@ VALUES('$user_studentID','$user_fullname','$user_faculty','$user_department','$u
 			echo json_encode($arr) ;
 
 		}
+	}else{
+		$arr['isSent'] = false;
+		$arr['status'] = 'error';
+		$arr['statusCode'] = 400;
+		echo json_encode($arr) ;
 	}
 
 ?>
