@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\SMTP;
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 require './conn.php';
-sendMail($SIGNUPLINK,$SYSEMAIL);
+//sendMail($SIGNUPLINK,$SYSEMAIL);
 if(isset($_GET['id'])){
 
 
