@@ -6,8 +6,6 @@ require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 
 require "../conn.php";
-
-
 	$name = $_POST['name'];
 	$user_studentID = $_POST['user_studentID'];
 	$user_fullname = $_POST['user_fullname'];
@@ -24,6 +22,7 @@ require "../conn.php";
 	if(isset($_FILES['image']['name'])){
 		$image = $_FILES['image']['name'];
 		$tmp_name = $_FILES['image']['tmp_name'];
+		$imagePath = 'avataruser/'.$image;
 		move_uploaded_file($tmp_name, $imagePath);
 	}
 	$imagePath = 'avataruser/'.$image;
