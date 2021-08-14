@@ -7,7 +7,7 @@ $user_username = $_POST['user_username'];
 $user_password = $_POST['user_password'];
 
 
-$sql = "SELECT * FROM tb_usernew WHERE user_username = '" . $user_username . "' AND user_password = '" . $user_password . "'";
+$sql = "SELECT * FROM tb_usernew WHERE user_username = '" . $user_username . "' AND user_password = '" . $user_password . "' AND isVerify = 1";
 $result = $conn->query($sql);
 
 
@@ -62,6 +62,8 @@ WHERE tb_usernew.user_studentID = '$id' ORDER BY tb_timeline.time_checkout DESC"
     echo $res->mapResponse();
 } else {
     $errRes = new UserLogin();
+
+    $errRes->errMsg = "username/password invalid or account is not verify email";
     echo $errRes->mapResponse();
 }
 ?>
