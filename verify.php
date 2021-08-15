@@ -13,7 +13,7 @@ if(isset($_GET['id'])){
     $sql = "UPDATE tb_usernew SET isVerify=1 WHERE user_studentID = '{$_GET['id']}'";
     $result = $conn->query($sql);
     if($result){
-        header('location: http://localhost/epidemic/done-reset-password.php');
+        header('location: '.$DONE_VERIFY);
     }
 }
 

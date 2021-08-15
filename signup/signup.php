@@ -6,7 +6,7 @@ require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 
 require "../conn.php";
-	$name = $_POST['name'];
+	//$name = $_POST['name'];
 	$user_studentID = $_POST['user_studentID'];
 	$user_fullname = $_POST['user_fullname'];
 	$user_faculty = $_POST['user_faculty'];
