@@ -45,4 +45,4 @@ if(isset($_POST['epidemic_id'])){
 
 
 $riskArea = new RiskArea();
-echo $riskArea->edit($id,$placeID,$placeName,$lat,$long,$startDate,$endDate,$status_id,$conn);
+echo $riskArea->edit($id,$placeID,$placeName,$lat,$long,$startDate,$endDate,$status_id,$epidemic_id,$conn);

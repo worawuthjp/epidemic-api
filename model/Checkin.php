@@ -34,8 +34,8 @@ class Checkin
                 $status = 1;
             }
         }
-        $sql = "INSERT INTO `tb_timeline`(timeline_name,place_id,user_studentID,latitude,longtitude,time_checkin,status) 
-VALUES('$name','$placeID','$id','$lat','$long','$date','$status')";
+        $sql = "INSERT INTO `tb_timeline`(timeline_name,place_id,user_studentID,latitude,longtitude,time_checkin) 
+VALUES('$name','$placeID','$id','$lat','$long','$date')";
         $result = $conn->query($sql);
         if($result){
             $res['msg'] = 'success';
