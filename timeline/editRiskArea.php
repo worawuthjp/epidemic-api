@@ -10,6 +10,7 @@ $startDate = null;
 $endDate = null;
 $id = null;
 $status_id = null;
+$epidemic_id = null;
 if(isset($_POST['placeName'])){
     $placeName = $_POST['placeName'];
 }
@@ -37,6 +38,9 @@ if(isset($_POST['id'])){
 
 if(isset($_POST['statusID'])){
     $status_id = $_POST['statusID'];
+}
+if(isset($_POST['epidemic_id'])){
+    $epidemic_id = $_POST['epidemic_id'];
 }
 
 

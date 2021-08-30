@@ -10,6 +10,7 @@ $startDate = null;
 $endDate = null;
 $adminID = null;
 $status_id = null;
+$epidemic_id = null;
 
 if(isset($_POST['placeName'])){
     $placeName = $_POST['placeName'];
@@ -40,6 +41,10 @@ if(isset($_POST['statusID'])){
     $status_id = $_POST['statusID'];
 }
 
+if(isset($_POST['epidemic_id'])){
+    $epidemic_id = $_POST['epidemic_id'];
+}
+
 
 $riskArea = new RiskArea();
-echo $riskArea->add($placeID,$placeName,$lat,$long,$startDate,$endDate,$adminID,$status_id,$conn);
+echo $riskArea->add($placeID,$placeName,$lat,$long,$startDate,$endDate,$adminID,$status_id,$epidemic_id,$conn);
