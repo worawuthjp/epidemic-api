@@ -30,7 +30,8 @@ WHERE tb_usernew.user_studentID = '$id' ORDER BY tb_timeline.time_checkout DESC"
         $status = "";
         while ($row = $result2->fetch_assoc()) {
             $now = date('Y-m-d');
-            $query = "SELECT tb_timeline.* FROM tb_timeline INNER JOIN tb_riskarea ON tb_riskarea.placeID = tb_timeline.place_id WHERE DATEDIFF('$now',tb_riskarea.endDate) > 14 and tb_timeline.user_studentID = '{$row['user_studentID']}';";
+            $query = "SELECT tb_riskarea.*,tb_epidemic.* 
+FROM tb_riskarea INNER JOIN tb_timeline ON tb_riskarea.placeID = tb_timeline.place_id INNER JOIN tb_epidemic ON tb_epidemic.epidemic_id = tb_riskarea.epidemic_id WHERE DATEDIFF('$now',tb_riskarea.endDate) <= 14 and tb_timeline.user_studentID = '{$row['user_studentID']}' GROUP BY tb_riskarea.riskarea_id";
             $result_query = $conn->query($query);
             if($result_query->num_rows > 0) {
 
